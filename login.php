@@ -9,7 +9,7 @@ if (isset($_POST['email']) && strlen($_POST['email']) > 0){
         $_SESSION['email'] = $mysqli->escape_string($_POST['email']);
         $_SESSION['senha'] = md5(md5($_POST['senha']));
 
-        $sql_code = "SELECT senha, codigo FROM usuario WHERE email = '$_SESSION[email]'";
+        $sql_code = "SELECT senha, codigo FROM usuario WHERE email = '$_SESSION[email]";
         $sql_query = $mysqli->query($sql_code) or die($mysqli->error);
         $dado = $sql_query->fetch_assoc();
         $total = $sql_query->num_rows;
@@ -30,13 +30,13 @@ if (isset($_POST['email']) && strlen($_POST['email']) > 0){
             }
     
         }
-
+    
         $erro = [];
     if (!isset($erro)  || count($erro) == 0){
         return "<script>alert('Login efetuado com sucesso'); location.href='sucesso.php';</script>";
     }
 
-}
+
 
 
 ?>
@@ -49,7 +49,7 @@ if (isset($_POST['email']) && strlen($_POST['email']) > 0){
             <?php
             if(isset($erro) && count($erro) > 0)
             foreach ($erro as $msg){
-                return "<p>$msg</p>";
+                echo "<p>$msg</p>";
             }
             
             // if(count($erro) > 0)
@@ -58,7 +58,7 @@ if (isset($_POST['email']) && strlen($_POST['email']) > 0){
             //     }
             ?>
             <form method="POST" action="">
-                <p><input value="<?php echo $_SESSION['email']?>"  name="E-mail" placeholder="E-mail" type="text" ></p>
+                <p><input value= <? echo $_SESSION['email']?>  name="E-mail" placeholder="E-mail" type="text" ></p>
                 <p><input name="senha"  type="password"></p>
                 <p><a href="">Esqueceu a Senha?</a></p>
                 <p><input value="Entrar" type="submit"></p>
