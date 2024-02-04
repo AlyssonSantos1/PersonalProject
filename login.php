@@ -61,7 +61,7 @@ $email = isset($_SESSION['email']) ? $_SESSION['email'] : null;
             //     }
             ?>
             <form method="POST" action="">
-                <p><input value=<?=$email?>  name="E-mail" placeholder="E-mail" type="text" ></p>
+                <p><input value="<?=$email?>"  name="E-mail" placeholder="E-mail" type="text" ></p>
                 <p><input name="senha"  type="password"></p>
                 <p><a href="">Esqueceu a Senha?</a></p>
                 <p><input value="Entrar" type="submit"></p>
