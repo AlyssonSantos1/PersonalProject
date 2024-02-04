@@ -2,7 +2,9 @@
 
 include("conexao.php");
 if (isset($_POST['email']) && strlen($_POST['email']) > 0){
+    $erro = [];   
 
+        
     if(!isset($_SESSION))
         session_start();
 
@@ -31,11 +33,10 @@ if (isset($_POST['email']) && strlen($_POST['email']) > 0){
     
         }
     
-        $erro = [];
-    if (!isset($erro)  || count($erro) == 0){
-        return "<script>alert('Login efetuado com sucesso'); location.href='sucesso.php';</script>";
-    }
-
+      
+        if (!isset($erro)  || count($erro) == 0){
+            return "<script>alert('Login efetuado com sucesso'); location.href='sucesso.php';</script>";
+        }
 
 }
 $email = isset($_SESSION['email']) ? $_SESSION['email'] : null;
@@ -60,7 +61,7 @@ $email = isset($_SESSION['email']) ? $_SESSION['email'] : null;
             //     }
             ?>
             <form method="POST" action="">
-                <p><input value <?= $email?>  name="E-mail" placeholder="E-mail" type="text" ></p>
+                <p><input value= <?= $email?>  name="E-mail" placeholder="E-mail" type="text" ></p>
                 <p><input name="senha"  type="password"></p>
                 <p><a href="">Esqueceu a Senha?</a></p>
                 <p><input value="Entrar" type="submit"></p>
