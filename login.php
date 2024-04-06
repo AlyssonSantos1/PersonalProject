@@ -36,7 +36,8 @@ if (isset($_POST['email']) && strlen($_POST['email']) > 0){
     
       
         if (!isset($erro)  || count($erro) == 0){
-            echo "<script>alert(Login efetuado com sucesso); location.href='sucesso.php';</script>";
+            echo "<script>alert('Login efetuado com sucesso'); window.location.href='sucesso.php';
+            </script>";
         }
 
         header("Location: sucesso.php");
