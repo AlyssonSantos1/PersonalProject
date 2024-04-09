@@ -12,7 +12,7 @@ if (isset($_POST['email']) && strlen($_POST['email']) > 0){
         $_SESSION['senha'] = md5(md5($_POST['senha']));
 
 
-        $sql_code = "SELECT senha, codigo FROM usuario WHERE email =  $_SESSION[email]";
+        $sql_code = "SELECT senha, codigo FROM usuario WHERE email =  {$_SESSION['email']}";
         $sql_query = $mysqli->query($sql_code) or die($mysqli->error);
         $dado = $sql_query->fetch_assoc();
         $total = $sql_query->num_rows;
@@ -74,7 +74,7 @@ $email = isset($_SESSION['email']) ? $_SESSION['email'] : null;
                 <p><input value="<?=$email?>"  name="E-mail" placeholder="E-mail" type="text" ></p>
                 <p><input name="senha"  type="password"></p>
                 <p><a href="">Esqueceu a Senha?</a></p>
-                <p><input value="Entrar" type="submit"></p>
+                <p><button value="Entrar"></p>
             </form>
         </body>
 </html>
