@@ -9,8 +9,8 @@ if (isset($_POST['email']) && strlen($_POST['email']) > 0){
         session_start();
 
         $_SESSION['email'] = $mysqli->escape_string($_POST['email']);
-        $_SESSION['senha'] = md5(md5($_POST['senha']));
-        var_dump(json_encode($_SESSION));
+        $_SESSION['senha'] = $_POST['senha'];
+        
 
 
         $sql_code = "SELECT senha, codigo FROM usuarios WHERE email =  '{$_SESSION['email']}'"; 
@@ -36,11 +36,7 @@ if (isset($_POST['email']) && strlen($_POST['email']) > 0){
         }
     
       
-        // if (!isset($erro)  || count($erro) == 0){
-        //     echo "<script>alert('Login efetuado com sucesso'); window.location.href='sucesso.php';
-        //     </script>";
-        // }
-
+       
        
 
 
@@ -66,12 +62,9 @@ $email = isset($_SESSION['email']) ? $_SESSION['email'] : null;
                 echo "<p>$msg</p>";
             }
             
-            // if(count($erro) > 0)
-            //     foreach ($erro as $msg){
-            //         return "<p>$msg</p>";
-            //     }
+            
             ?>
-            <form method="POST" action="">
+            <form method="POST" action="sucesso.php">
                 <p><input value="<?=$email?>"  name="email" placeholder="email" type="text" ></p>
                 <p><input name="senha"  type="password"></p>
                 <p><a href="">Esqueceu a Senha?</a></p>
